@@ -6,4 +6,4 @@ def subtraction():
   result = num1 - num2
   return result
 
-# 연습
+# Hello, World 10
