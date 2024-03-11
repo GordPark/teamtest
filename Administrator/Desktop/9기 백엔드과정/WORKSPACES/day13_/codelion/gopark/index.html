@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>세렝게티 동물 테스트</title>
+    <meta name="description" content="나랑 꼭 닮은 세렝게티 동물을 MBTI를 기반으로 추천해주는 테스트입니다.">
+    <meta property="og:type" content="website"> 
+    <meta property="og:title" content="세렝게티 동물 테스트">
+    <meta property="og:description" content="나랑 꼭 닮은 세렝게티 동물을 MBTI를 기반으로 추천해주는 테스트입니다.">
+    <meta property="og:image" content="http://serangetigpark.netlify.app/lion.jpg">
+    <meta property="og:url" content="http://serangetigpark.netlify.app">
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+        crossorigin="anonymous"
+        />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body class="container">
+    <article class="start">
+        <h1 class="mt-5 text-center">나랑 꼭 닮은 세렝게티 동물은?</h1>
+        <button type="button" class="btn btn-primary mt-5" onclick="start();">
+            테스트 시작하기
+        </button>
+    </article>
+
+    <article class="question">
+        <div class="progress mt-5">
+            <div
+            class="progress-bar"
+            role="progressbar"
+            aria-label="Basic example"
+            style="width: calc(100 / 12 * 1%)"
+            aria-valuenow="25"
+            aria-valuemin="0"
+            aria-valuemax="100">
+            </div>
+        </div>
+        <h2 id="title" class="text-center mt-5">문제</h2>
+        <input id="type" type="hidden" value="EI">
+        <button id="A" type="button" class="btn btn-primary mt-5">
+            테스트 시작하기
+        </button>
+        <button id="B" type="button" class="btn btn-primary mt-5">
+            테스트 시작하기
+        </button>
+    </article>
+    <article class="result">
+        <img id="img" class="rounded-circle mt-5" src="lion.jpg" alt="">
+        <h2 id="animal" class="text-center mt-5">동물이름</h2>
+        <h3 id="explain" class="text-center mt-5">설명</h3>
+        <button class="button" data-sharer="instapaper" data-title="Checkout Sharer.js!" data-description="Awesome lib!" data-url="https://ellisonleao.github.io/sharer.js/">Share on Instapaper</button>
+        <button class="button" data-sharer="facebook" data-hashtag="hashtag" data-url="https://ellisonleao.github.io/sharer.js/">Share on Facebook</button>
+        <button class="button" data-sharer="twitter" data-title="Checkout Sharer.js!" data-hashtags="awesome, sharer.js" data-url="https://ellisonleao.github.io/sharer.js/">Share on Twitter</button>
+    </article>
+    <a class="mt-5 banner" href="https://www.codelion.net/catalog/Q291cnNlTm9kZTpqbW9r?utm_source=animal_test&utm_medium=web_lecture&utm_campaign=
+    anu051@nate.com">
+        <img class=".banner-img" src="banner.png" alt="banner">
+    </a>
+
+    <input type="hidden" id="EI" value="0">
+    <input type="hidden" id="SN" value="0">
+    <input type="hidden" id="TF" value="0">
+    <input type="hidden" id="JP" value="0">
+    <article class="kakao_ad mt-5">
+        <ins class="kakao_ad_area" style="display:none;"
+        data-ad-unit = "DAN-4hZAFHsKYfPfpgEM"
+        data-ad-width = "320"
+        data-ad-height = "100"></ins>
+    </article>
+    
+<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"
+    ></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"
+    ></script>
+    <script src="path/to/sharer.min.js"></script>
+    <script>
+        var num = 1;
+        var q = {
+            1: {"title": "문제 1번", "type": "EI", "A": "당신은 주로 외향적인 사람입니까", "B": "아니면 내향적인 사람입니까",},
+            2: {"title": "문제 2번", "type": "EI", "A": "새로운 사람들과 만나는 것을 즐기나요", "B": "아니면 조용한 모임을 선호하나요",},
+            3: {"title": "문제 3번", "type": "EI", "A": "새로운 사람들과의 만남을 즐기는 편인가요 ", "B": "아니면 작은 모임을 선호하는 편인가요",},
+            4: {"title": "문제 4번", "type": "SN", "A": "아니면 구체적인 계획을 세우는 것을 선호하나요 ", "B": "당신은 세부적인 계획보다는 새로운 경험을 즐기는 편인가요 ",},
+            5: {"title": "문제 5번", "type": "SN", "A": "아니면 안전과 안정을 중요시하는 편인가요 ", "B": "새로운 도전에 대한 호기심이 있나요",},
+            6: {"title": "문제 6번", "type": "SN", "A": "새로운 사람들을 주의 깊게 관찰하고, 그들의 행동을 분석하나요", "B": "자유롭게 대화를 시작하고, 새로운 아이디어를 공유하나요",},
+            7: {"title": "문제 7번", "type": "TF", "A": "당신은 논리적이고 분석적인 사람입니까 ", "B": "아니면 감정에 더 의존하는 편인가요 ",},
+            8: {"title": "문제 8번", "type": "TF", "A": "결정을 내릴 때 주로 감정보다는 논리적인 이유를 따르나요", "B": "아니면 자신의 감정에 따라 결정하는 편인가요",},
+            9: {"title": "문제 9번", "type": "TF", "A": "어려운 문제에 직면했을 때 당신은 주로 객관적인 분석을 선호하나요", "B": "아니면 다양한 관점을 고려하나요",},
+            10: {"title": "문제 10번", "type": "JP", "A": "당신은 미래에 대한 구체적인 계획을 세우는 것을 선호하나요", "B": "아니면 옵션을 계속 열어두는 것을 선호하나요",},
+            11: {"title": "문제 11번", "type": "JP", "A": "여행을 계획할 때 보통 세세한 일정을 짜나요", "B": "아니면 유연하게 계획을 세우나요 ",},
+            12: {"title": "문제 12번", "type": "JP", "A": "계획을 세운 후에는 그대로 실행하고 완성시키기를 선호하나요", "B": "유연하게 계획을 변경하면서 진행하고 새로운 아이디어를 계속 받아들이나요",}
+        };
+        var result = {
+            "ISTJ": { "animal": "기린", "explain": "실용적이고 조직적인 ISTJ (신중한 검프로) 유형에게는 조용하고 차분한 기린이 어울릴 수 있습니다. 기린은 높은 지능을 가지고 있으며 신중한 행동으로 주위를 지켜보는 성향이 있습니다.", "img": "giraffe.jpg" },
+            "ISTP": { "animal": "치타", "explain": "ISTP(대담한 탐험가) 유형은 모험을 즐기고 스릴을 추구하는 경향이 있습니다. 치타는 빠른 속도와 대담한 행동으로 유명하며, ISTP 유형과의 호흡이 맞을 것입니다.", "img": "cheetah.jpg" },
+            "ISFJ": { "animal": "코끼리", "explain": "ISFJ (따뜻한 수호자) 유형은 따뜻하고 돌봄을 제공하는 특성을 가집니다. 코끼리는 가족 중심적이고 따뜻한 동물로, ISFJ 유형의 사람들과 잘 어울릴 수 있습니다.", "img": "elephant.jpg" },
+            "ISFP": { "animal": "팬더", "explain": "ISFP (호기심 많은 예술가) 유형은 예술적인 특성을 가지며 자연과 조화를 이루는 것을 선호합니다. 팬더는 귀여운 외모와 평화로운 성격으로 ISFP 유형과 어울릴 수 있습니다.", "img": "panda.jpg" },
+            "INTJ": { "animal": "혹독한 개츠비 (하이에나)", "explain": "INTJ (전략가) 유형은 전략적이고 분석적인 성향을 가집니다. 혹독한 개츠비는 높은 지능과 계획적인 사고를 가진 동물로, INTJ 유형의 사람들과 어울릴 수 있습니다.", "img": "hyena.jpg" },
+            "INTP": { "animal": "오코피", "explain": "INTP(논리적인 사색가) 유형은 논리적이고 분석적인 성향을 가집니다. 오코피는 특이한 외모와 점박이 패턴을 가졌으며, 철저한 특이함으로 인해 INTP와 어울릴 수 있습니다.", "img": "okapi.jpg" },
+            "INFJ": { "animal": "사자", "explain": "사자는 지도자적이고 이상적인 특성을 가진 동물입니다. INFJ(예언자) 유형은 사회적으로 책임감이 강하고 진실한 가치를 추구하는 경향이 있으므로, 사자와 공감할 수 있을 것입니다.", "img": "lion.jpg" },
+            "INFP": { "animal": "원숭이", "explain": "INFP(열정적인 중재자) 유형은 창의적이고 이상적인 특성을 가집니다. 원숭이는 호기심 많고 재미있는 성격으로, INFP 유형의 사람들과 잘 어울릴 수 있습니다.", "img": "ape.jpg" },
+            "ESTJ": { "animal": "호랑이", "explain": "ESTJ(엄격한 관리자) 유형은 실용적이고 조직적인 특성을 가지고 있습니다. 호랑이는 강하고 뛰어난 지도력을 가진 동물로, ESTJ 유형과 어울릴 수 있을 것입니다.", "img": "tiger.jpg" },
+            "ESTP": { "animal": "바다독수리", "explain": "ESTP(활동적인 조정가) 유형은 대담하고 모험을 즐기는 경향이 있습니다. ESTP와 바다독수리는 모험적이고 활동적인 성격을 공유하기 때문에 어울릴 수 있습니다.", "img": "eagle.jpg" },
+            "ESFJ": { "animal": "하마", "explain": "ESFJ (따뜻한 사교쟁이) 유형의 사람들은 사회적이고 따뜻한 성향을 가지고 있으며, 하마는 친근한 성격을 가진 ESFJ와 함께 물이 있는 환경에서 즐거운 경험을 제공할 수 있습니다.", "img": "hippo.jpg" },
+            "ENTJ": { "animal": "악어", "explain": "ENTJ (대담한 지도자) 유형의 사람들은 대담하고 결단력이 있으며, 능력 있는 지도자로서 다른 사람들을 이끌어가는 성향이있습니다 악어는 능력 있는 지도자의 이미지와 잘 어울리는 동물입니다. 그들은 묵직하고 힘있는 이미지를 가지고 있으며, 능력과 지도력을 상징하는데 도움이 될 수 있습니다.", "img": "crocodile.jpg" },
+            "ESFP": { "animal": "물소", "explain": "ESFP(자유로운 영혼)은 활동적이고 사교적인 성격으로, 즐거움을 추구하며 새로운 경험을 즐기는 유형입니다. 물소는 사교적이고 활발한 성격을 가진 동물로, ESFP와 함께하는데 적합합니다. 그들의 활동적인 에너지와 함께 모험을 즐길 수 있을 것입니다.", "img": "bison.jpg" },
+            "ENTP": { "animal": "랏코 (아프리카 바퀴)", "explain": " 랏코는 아프리카에서 발견되는 큰 크기의 동물로, 그들의 호기심과 활동적인 성격이 ENTP(혁신적인 탐험가)의 개성과 잘 어울립니다. 또한 랏코는 독특한 외모와 사교적인 행동으로 유명합니다.", "img": "civetta.jpg" },
+            "ENFJ": { "animal": "사슴", "explain": "ENFJ(열정적인 리더)는 다른 사람들을 돕고 지원하는 데에 열정을 가지고 있으며, 리더십 역할을 맡는 데 자연스럽습니다. 사슴은 우아하고 조용한 동물로, 친근한 성격과 조화로운 분위기를 가지고 있어 ENFJ와 잘 어울립니다.", "img": "deer.jpg" },
+            "ENFP": { "animal": "흑백물범", "explain": " 흑백물범은 활발하고 호기심 많은 성격으로 알려져 있으며, 그들의 재치있고 쾌활한 태도가 ENFP(열정적인 탐험가)와 잘 어울립니다. ", "img": "polecat.jpg"}
+        };
+
+        function start() {
+            $(".start").hide();
+            $(".question").show();
+            next();
+        }
+        $("#A").click(function () {
+            // console.log($("#type").val());
+            var type = $("#type").val();
+            var preValue = $("#" + type).val();
+            $("#" + type).val(parseInt(preValue) + 1);
+            // console.log(parseInt(preValue) + 1);
+            next();
+        });
+        $("#B").click(function () {
+            next();
+        });
+
+        function next() {
+            if (num == 13) {
+                $(".question").hide();
+                $(".result").show();
+                var mbti = "";
+                ($("#EI").val() < 2) ? mbti += "I" : mbti += "E";
+                ($("#SN").val() < 2) ? mbti += "N" : mbti += "S";
+                ($("#TF").val() < 2) ? mbti += "F" : mbti += "T";
+                ($("#JP").val() < 2) ? mbti += "P" : mbti += "J";
+                // if($("#EI").val() < 2) {
+                //     mbti = mbti + "I";
+                // } else {
+                //     mbti = mbti + "E";
+                // }
+                alert(mbti);
+                $("#img").attr("src", result[mbti]["img"]);
+                $("#animal").html(result[mbti]["animal"]);
+                $("#explain").html(result[mbti]["explain"]);
+            } else {
+                $(".progress-bar").attr('style', 'width: calc(100/12* '+num+'%)');
+                $("#title").html(q[num]["title"]);
+                $("#type").val(q[num]["type"]);
+                $("#A").html(q[num]["A"]);
+                $("#B").html(q[num]["B"]);
+                num++;
+            }
+        }
+    </script>
+</body>
+</html>
